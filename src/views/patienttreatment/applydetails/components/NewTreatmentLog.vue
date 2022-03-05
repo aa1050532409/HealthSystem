@@ -1,0 +1,205 @@
+<template>
+  <div class="newLog">
+    <div class="header clearfix">
+      <el-link type="primary" @click="importHistory" class="import">
+        导入历史方案</el-link
+      >
+    </div>
+    <span class="label">患者状况：</span>
+    <div class="box" @click="inputBoxShow('state')">
+      <p>{{ newLog.API_patientState.join("，") || "暂无" }}</p>
+    </div>
+    <span class="label">治疗建议：</span>
+    <div class="box" @click="inputBoxShow('treatment')">
+      <p>{{ newLog.API_treatment.join("，") || "暂无" }}</p>
+    </div>
+    <div>
+      <prescription-edit
+        :prescription="newLog.API_prescription"
+        @input="prescription($event)"
+      ></prescription-edit>
+    </div>
+
+    <!-- 导入历史对话框 -->
+    <el-dialog
+      title="历史治疗方案"
+      :visible.sync="importDialogFlag"
+      width="800px"
+    >
+      <el-table
+        ref="historyTreatment"
+        :data="historyLogs.slice(0, 5)"
+        style="width: 100%"
+      >
+        <el-table-column type="expand">
+          <template slot-scope="scope">
+            <Prescription
+              :prescription="scope.row.API_prescription"
+            ></Prescription>
+          </template>
+        </el-table-column>
+        <el-table-column label="患者状况">
+          <template slot-scope="scope">
+            <span>{{ scope.row.API_patientState.join("，") }}</span>
+          </template>
+        </el-table-column>
+        <el-table-column label="治疗建议">
+          <template slot-scope="scope">
+            <span>{{ scope.row.API_description.join("，") }}</span>
+          </template>
+        </el-table-column>
+        <el-table-column label="处方">
+          <template slot-scope="scope">
+            <el-button type="text" @click="toogleExpand(scope.row)"
+              >查看</el-button
+            >
+          </template>
+        </el-table-column>
+        <el-table-column prop="address" width="100" label="操作">
+          <template slot-scope="scope">
+            <el-button
+              size="mini"
+              type="danger"
+              @click="confirmImporrt(scope.row)"
+              >选择</el-button
+            >
+          </template>
+        </el-table-column>
+      </el-table>
+      <span slot="footer" class="dialog-footer"></span>
+    </el-dialog>
+  </div>
+</template>
+
+<script>
+import SpecialInput from "@components/common/SpecialInput.vue";
+import PrescriptionEdit from "@components/common/PrescriptionEdit.vue";
+import Prescription from "@components/common/Prescription.vue";
+import { getHistoryTreatLog } from "@api/patienttreatment/patienttreatment.js";
+export default {
+  name: "NewTreatmentLog",
+  props: {
+    newLog: {
+      type: Object,
+      default: () => {
+        return {
+          API_patientState: ["头疼", "眼花缭乱"],
+          API_treatment: ["按时吃药", "定时体检"],
+          API_prescription: [
+            {
+              API_drugsName: "含曲林片",
+              API_drugsNumberUnits: "盒",
+              API_drugsNumber: "2",
+              API_drugsUsage: "一次两粒",
+              API_useFrequency: "一天一次",
+              API_drugsSpecification: "0.1g",
+              API_useTime: "饭后",
+              API_isEditable: false,
+              API_days: "7"
+            }
+          ]
+        };
+      }
+    },
+    options: {
+      type: Object,
+      default: () => {
+        return {
+          type: "newLog"
+        };
+      }
+    }
+  },
+  watch: {
+    newLog: newValue => {}
+  },
+  data() {
+    return {
+      importDialogFlag: false,
+      dialogVisible: false,
+      newTreatmentLog: {
+        API_treatment: [],
+        API_prescription: [],
+        API_prescriptionFlag: true
+      },
+      historyLogs: []
+    };
+  },
+  components: {
+    SpecialInput,
+    PrescriptionEdit,
+    Prescription
+  },
+  methods: {
+    toogleExpand(row) {
+      let $table = this.$refs.historyTreatment;
+      $table.toggleRowExpansion(row);
+    },
+    confirmImporrt(data) {
+      this.importDialogFlag = false;
+      this.$emit("import", data);
+    },
+    importHistory() {
+      getHistoryTreatLog().then(res => {
+        this.importDialogFlag = true;
+        this.historyLogs = res;
+      });
+    },
+    inputBoxShow(type) {
+      this.$emit("inputBox", type);
+    },
+    prescription(data) {
+      this.newTreatmentLog.API_prescription = data;
+
+      this.$emit("prescription", this.newTreatmentLog.API_prescription);
+    }
+  }
+};
+</script>
+
+<style lang="scss" scoped>
+.newLog {
+  .label {
+    font-size: 16px;
+    color: #1c7e7c;
+  }
+  .header {
+    .import {
+      float: right;
+    }
+  }
+  .box {
+    width: 100%;
+    min-height: 60px;
+    margin-top: 5px;
+    border: 1px solid #e4e7ed;
+    p {
+      margin-top: 5px;
+      font-size: 16px;
+      text-indent: 20px;
+    }
+  }
+}
+.clearfix:after {
+  content: ""; /*设置内容为空*/
+  height: 0; /*高度为0*/
+  line-height: 0; /*行高为0*/
+  display: block; /*将文本转为块级元素*/
+  visibility: hidden; /*将元素隐藏*/
+  clear: both; /*清除浮动*/
+}
+.inputBox {
+  position: fixed;
+  bottom: 0px;
+  width: calc(89% - 240px);
+  z-index: 100;
+  transition: 0.5s;
+}
+
+.inputBox2 {
+  position: fixed;
+  bottom: 0px;
+  width: calc(89%);
+  transition: 0.5s;
+}
+</style>

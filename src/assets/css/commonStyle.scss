@@ -1,0 +1,152 @@
+// 清除浮动
+@import "./variable.scss";
+
+.clearFloat::after {
+    content: " ";
+    display: block;
+    height: 0;
+    visibility: hidden;
+    clear: both;
+}
+
+.mainLabel {
+    font-size: $font_extra_large;
+    font-weight: bolder;
+    color: $mainColor;
+}
+
+// label
+.secondLabel {
+    font-size: $font_large;
+    font-weight: bolder;
+    color: $mainColor;
+}
+
+.subLabel {
+    font-size: $font_medium;
+    font-weight: bolder;
+    color: $mainColor;
+}
+
+
+// global-style
+.global-container {
+    padding: 0 2.5%;
+}
+
+
+// global table style
+.global-table-header {
+    text-align: center !important;
+    font-size: $font_large !important;
+    font-weight: bold !important;
+    color: $mainColor !important;
+    background: $mainBackgroundColor !important;
+}
+
+.global-table-cell {
+    text-align: center;
+    font-size: $font_base;
+}
+
+.global-table-row-highlight {
+    background: oldlace;
+}
+
+// box 
+.global-box {
+    font-size: $font_base;
+    // font-size: $font_base;
+}
+
+
+// 基础通用
+/** 基础通用 **/
+.pt5 {
+    padding-top: 5px;
+}
+
+.pr5 {
+    padding-right: 5px;
+}
+
+.pb5 {
+    padding-bottom: 5px;
+}
+
+.mt5 {
+    margin-top: 5px;
+}
+
+.mr5 {
+    margin-right: 5px;
+}
+
+.mb5 {
+    margin-bottom: 5px;
+}
+
+.mb8 {
+    margin-bottom: 8px;
+}
+
+.ml5 {
+    margin-left: 5px;
+}
+
+.mt10 {
+    margin-top: 10px;
+}
+
+.mr10 {
+    margin-right: 10px;
+}
+
+.mb10 {
+    margin-bottom: 10px;
+}
+
+.ml0 {
+    margin-left: 10px;
+}
+
+.mt20 {
+    margin-top: 20px;
+}
+
+.mr20 {
+    margin-right: 20px;
+}
+
+.mb20 {
+    margin-bottom: 20px;
+}
+
+.m20 {
+    margin-left: 20px;
+}
+
+.ft20 {
+    font-size: $font_extra_large;
+}
+
+.ft18 {
+    font-size: $font_large;
+}
+
+.ft16 {
+    font-size: $font_medium;
+}
+
+.ft14 {
+    font-size: $font_base;
+}
+
+.ft13 {
+    font-size: $font_small;
+}
+
+.ft12 {
+    font-size: $font_extra_small;
+}
+

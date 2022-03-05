@@ -1,0 +1,23 @@
+{
+    "msg": "ok",
+    "chat": [
+        {
+            "messages": [
+                {
+                    "toid": "101001",
+                    "msgtime": "2020-09-22 14:53:25",
+                    "message": "ddd",
+                    "type": "text",
+                    "fromid": "102001"
+                }
+            ],
+            "id": "102001",
+            "user": {
+                "img": "http://122.152.205.72:88/group1/M00/00/05/CpoxxFw_8_qAIlFXAAAcIhVPdSg994.png",
+                "role": "医生",
+                "name": "医师102001"
+            }
+        }
+    ],
+    "status": 200
+}

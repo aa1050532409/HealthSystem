@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <div id="list" style="display: none">
+    <div class="select">
+      <label for="audioSource">麦克风: </label><select id="audioSource"></select>
+    </div>
+    <div class="select">
+      <label for="videoSource">摄像头: </label><select id="videoSource"></select>
+    </div>
+    <div class="select">
+      <label for="audioOutput">扬声器: </label><select id="audioOutput"></select>
+    </div>
+  </div>
+  <div id="dial">
+    <div>
+      会议ID：<input id="confid" value="57258415324"></input>
+    </div>
+    <div>
+      会议密码：<input id="password" value=""></input>
+    </div>
+    <div>
+      入会昵称：<input id="name" value="123456"></input>
+    </div>
+    <div>
+      <button id="join" onclick="join()">加入会议</button>
+      <button id="set" onclick="set()">设置</button>
+    </div>
+    <canvas id="canvas" width="640" height="480" style="display: none"></canvas>
+  </div>
+  <div id="setting" style="display: none;">
+    <video id="testvideo" autoplay playsinline  width="640" height="480" style="object-fit: fill" controls></video>
+    <div>
+      <label for="bandwidth">视频质量（发送视频的码率）: </label>
+      <select id="bandwidth">
+        <option value="512">512kb</option>
+        <option value="1024">1M</option>
+        <option value="2048">2M</option>
+      </select>
+    </div>
+    <div>
+      <input type="checkbox" id="micClose">入会时关闭麦克风</input>
+      <input type="checkbox" id="cameraClose">入会时关闭摄像头</input>
+    </div>
+    <div>
+      <label for="mode">会议模式：</label>
+      <select id="mode">
+        <option value="video">视频模式</option>
+        <option value="audio">语音模式</option>
+      </select>
+    </div>
+    <button id="out" onclick="out()">保存并退出</button>
+  </div> 
+  <div id="meeting" style="display: none">
+    <video id="localaudio" autoplay playsinline muted style="display: none;"></video>
+		<video id="remoteaudio" autoplay playsinline :muted="mute" style="display: none;"></video>
+    <video id="myvideo" autoplay playsinline muted width="640" height="480" style="object-fit: fill" controls></video>
+    <video id="remotevideo" autoplay playsinline  width="640" height="480" style="object-fit: fill" controls></video>
+    <div>
+      <button id="mic" onclick="changeMic()">关闭麦克风</button>
+      <button id="camera" onclick="changeCamera()">关闭摄像头</button>
+      <button id="speaker" onclick="changeSpeaker()">关闭扬声器</button>
+      <button onclick="changeDevice()">切换摄像头麦克风</button>
+      <button id="presentation" onclick="presentation()">发送演示</button>
+      <button onclick="hangup()">挂断</button>
+    </div>
+    <video id="demovideo" autoplay playsinline muted width="640" height="480" style="object-fit: fill"></video>
+    <video id="remotemovideo" autoplay playsinline  width="640" height="480" style="object-fit: fill"></video>
+  </div>
+
+  <script>
+    function set() {
+      document.getElementById('setting').style.display = 'block';
+      document.getElementById('list').style.display = 'block';
+      document.getElementById('dial').style.display = 'none';
+      start();
+    }
+    function out() {
+      document.getElementById('setting').style.display = 'none';
+      document.getElementById('list').style.display = 'none'
+      document.getElementById('dial').style.display = 'block';
+      stopStream(previewStream);
+    }
+    // controlMic，controlCamera，controlSpeaker发送协议告知服务端，是否成功服务端会返回数据
+    function changeMic() {
+      if (document.getElementById('mic').innerText === '打开麦克风') {
+        common.controlMic(true);
+      } else {
+        common.controlMic(false);
+      }
+    }
+    function changeCamera() {
+      if (document.getElementById('camera').innerText === '打开摄像头') {
+        common.controlCamera(true);
+      } else {
+        common.controlCamera(false);
+      }
+    }
+    function changeSpeaker() {
+      console.log(document.getElementById('speaker').innerText);
+      if (document.getElementById('speaker').innerText === '打开扬声器') {
+        common.controlSpeaker(true);
+      } else {
+        common.controlSpeaker(false);
+      }
+    }
+    function changeDevice() {
+      // 如果摄像头和麦克风没有改变就不要调用下面的方法
+      common.changeDevice(document.getElementById('audioSource').value, document.getElementById('videoSource').value);
+    }
+    function hangup() {
+      if (document.getElementById('presentation').innerText === '停止演示') {
+        common.hangupDemo();
+        common.hangup();
+      } else {
+        common.hangup()
+      }
+    }
+    function presentation() {
+      console.log(document.getElementById('presentation').innerText)
+      if (document.getElementById('presentation').innerText === '发送演示') {
+        if (receiveDemoState) {
+          console.log('其他人正在演示中')
+          return;
+        } else {
+          document.getElementById('presentation').innerText = '停止演示';
+          common.callDemo();
+        }
+      } else {
+        common.hangupDemo();
+        document.getElementById('presentation').innerText = '发送演示'
+      }
+    }
+  </script>
+  <script src="adapter.min.js"></script>
+  <script src="webrtc.js"></script>
+  <script src="common.js"></script>
+  <script src="demo.js"></script>
+</body>
+</html>

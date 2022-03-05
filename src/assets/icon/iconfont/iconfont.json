@@ -1,0 +1,191 @@
+{
+  "id": "1887057",
+  "name": "web",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "1256467",
+      "name": "团队设置",
+      "font_class": "tuanduishezhi",
+      "unicode": "e609",
+      "unicode_decimal": 58889
+    },
+    {
+      "icon_id": "1288665",
+      "name": "机构",
+      "font_class": "jigoushezhi",
+      "unicode": "e61a",
+      "unicode_decimal": 58906
+    },
+    {
+      "icon_id": "16488770",
+      "name": "视频",
+      "font_class": "shipin",
+      "unicode": "e604",
+      "unicode_decimal": 58884
+    },
+    {
+      "icon_id": "3142851",
+      "name": "话筒",
+      "font_class": "huatong",
+      "unicode": "e600",
+      "unicode_decimal": 58880
+    },
+    {
+      "icon_id": "7366990",
+      "name": "pic",
+      "font_class": "picture",
+      "unicode": "e606",
+      "unicode_decimal": 58886
+    },
+    {
+      "icon_id": "1120971",
+      "name": "密码",
+      "font_class": "mima",
+      "unicode": "e621",
+      "unicode_decimal": 58913
+    },
+    {
+      "icon_id": "5849193",
+      "name": "通知",
+      "font_class": "tongzhi",
+      "unicode": "e607",
+      "unicode_decimal": 58887
+    },
+    {
+      "icon_id": "700861",
+      "name": "支付宝",
+      "font_class": "zhifubao",
+      "unicode": "e65d",
+      "unicode_decimal": 58973
+    },
+    {
+      "icon_id": "3743585",
+      "name": "银行",
+      "font_class": "bank",
+      "unicode": "e626",
+      "unicode_decimal": 58918
+    },
+    {
+      "icon_id": "6366912",
+      "name": "微信",
+      "font_class": "weixin",
+      "unicode": "e614",
+      "unicode_decimal": 58900
+    },
+    {
+      "icon_id": "621619",
+      "name": "治疗癌症",
+      "font_class": "huanzhezhiliao",
+      "unicode": "e641",
+      "unicode_decimal": 58945
+    },
+    {
+      "icon_id": "10194310",
+      "name": "管理",
+      "font_class": "manage",
+      "unicode": "e65b",
+      "unicode_decimal": 58971
+    },
+    {
+      "icon_id": "3909815",
+      "name": "干预随访历史",
+      "font_class": "suifangguanli",
+      "unicode": "e67d",
+      "unicode_decimal": 59005
+    },
+    {
+      "icon_id": "376341",
+      "name": "出诊时间",
+      "font_class": "chuzhenguanli",
+      "unicode": "e60c",
+      "unicode_decimal": 58892
+    },
+    {
+      "icon_id": "607131",
+      "name": "远程会诊",
+      "font_class": "putonghuizhen",
+      "unicode": "e649",
+      "unicode_decimal": 58953
+    },
+    {
+      "icon_id": "1220256",
+      "name": "护理",
+      "font_class": "huanzhehuli",
+      "unicode": "e603",
+      "unicode_decimal": 58883
+    },
+    {
+      "icon_id": "1347384",
+      "name": "more",
+      "font_class": "more",
+      "unicode": "e631",
+      "unicode_decimal": 58929
+    },
+    {
+      "icon_id": "1463624",
+      "name": "转诊",
+      "font_class": "zhuanzhenguanli",
+      "unicode": "e60e",
+      "unicode_decimal": 58894
+    },
+    {
+      "icon_id": "1761455",
+      "name": "医疗文件",
+      "font_class": "yiliaoxinxi",
+      "unicode": "e63a",
+      "unicode_decimal": 58938
+    },
+    {
+      "icon_id": "1991303",
+      "name": "信息",
+      "font_class": "message",
+      "unicode": "e6cd",
+      "unicode_decimal": 59085
+    },
+    {
+      "icon_id": "3899473",
+      "name": "学前诊断",
+      "font_class": "huanzhezhenduan",
+      "unicode": "e646",
+      "unicode_decimal": 58950
+    },
+    {
+      "icon_id": "6334911",
+      "name": "Icon - 视频会诊",
+      "font_class": "Icon-shipinhuizhen",
+      "unicode": "e60f",
+      "unicode_decimal": 58895
+    },
+    {
+      "icon_id": "8240781",
+      "name": "智能诊断",
+      "font_class": "zhinengzhenduan",
+      "unicode": "e937",
+      "unicode_decimal": 59703
+    },
+    {
+      "icon_id": "8508831",
+      "name": "个人信息",
+      "font_class": "gerenxinxi",
+      "unicode": "e847",
+      "unicode_decimal": 59463
+    },
+    {
+      "icon_id": "12070819",
+      "name": "患者记录",
+      "font_class": "huanzhexinxi",
+      "unicode": "e63c",
+      "unicode_decimal": 58940
+    },
+    {
+      "icon_id": "12952758",
+      "name": "查房记录",
+      "font_class": "chafangguanli",
+      "unicode": "e608",
+      "unicode_decimal": 58888
+    }
+  ]
+}

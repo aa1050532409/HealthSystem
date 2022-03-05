@@ -1,0 +1,44 @@
+html,
+body {
+  width: 100%;
+  height: 100%;
+  min-width: 1200px;
+  overflow-y: hidden;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* Chrome 滚动条优化 */
+* {
+  &::-webkit-scrollbar {
+    /*滚动条整体样式*/
+    position: fixed;
+    left: 0;
+    overflow: overlay;
+    width: 10px;
+    /*高宽分别对应横竖滚动条的尺寸*/
+    height: 8px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    /*滚动条里面小方块*/
+    border-radius: 8px;
+    background-color: hsla(220, 4%, 58%, .3);
+    transition: background-color .3s;
+
+    &:hover {
+      background: #bbb;
+    }
+  }
+
+  &::-webkit-scrollbar-track {
+    /*滚动条里面轨道*/
+    background: #EDEDED;
+  }
+}
+
+// 常量

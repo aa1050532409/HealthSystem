@@ -1,0 +1,20 @@
+// elementUI Style Reset
+
+// tips width control
+.el-tooltip__popper {
+    max-width: 300px !important;
+}
+
+
+
+// questionaire control
+.el-checkbox__input.is-disabled.is-checked .el-checkbox__inner::after {
+    border-color: $primaryColor
+}
+
+.el-collapse-item__header {
+    padding: 0 20px;
+    margin: 0 0 20px 0;
+    border-radius: 10px;
+    background-color: #eff3f4;
+}

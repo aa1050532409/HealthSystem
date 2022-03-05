@@ -1,0 +1,44 @@
+{
+  "name": "web",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "serve": "vue-cli-service serve",
+    "build": "vue-cli-service build",
+    "publish": "scp -r ./dist ubuntu@132.232.18.227:/home/ubuntu/web/",
+    "lint": "vue-cli-service lint",
+    "push": "git add . &&git commit -m 'zhangxiao' && git push",
+    "commit": "git push origin dev:master"
+  },
+  "dependencies": {
+    "axios": "^0.19.2",
+    "core-js": "^3.6.5",
+    "default-passive-events": "^2.0.0",
+    "element-ui": "^2.13.2",
+    "js-audio-recorder": "^1.0.6",
+    "localforage": "^1.9.0",
+    "mockjs": "^1.1.0",
+    "moment": "^2.29.1",
+    "socket.io-client": "^2.3.1",
+    "vue": "^2.6.11",
+    "vue-router": "^3.2.0",
+    "vue-socket.io-extended": "^4.0.4",
+    "vuex": "^3.4.0",
+    "vuex-persistedstate": "^3.1.0",
+    "webrtc-adapter": "^7.7.1"
+  },
+  "devDependencies": {
+    "@vue/cli-plugin-babel": "^4.4.0",
+    "@vue/cli-plugin-eslint": "^4.4.0",
+    "@vue/cli-service": "^4.4.0",
+    "@vue/eslint-config-prettier": "^6.0.0",
+    "babel-eslint": "^10.1.0",
+    "eslint": "^6.7.2",
+    "eslint-plugin-prettier": "^3.1.3",
+    "eslint-plugin-vue": "^6.2.2",
+    "node-sass": "^4.12.0",
+    "prettier": "^1.19.1",
+    "sass-loader": "^8.0.2",
+    "vue-template-compiler": "^2.6.11"
+  }
+}
