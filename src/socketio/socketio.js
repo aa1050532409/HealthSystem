@@ -3,7 +3,7 @@ import io from 'socket.io-client';
 import Vue from "vue";
 import socketMsgDeal from "./msgDeal.js"
 
-const socket = io('https://182.92.234.28:3000');
+const socket = io('http://182.92.234.28:3000');
 // const socket = io('https://www.nowhealth.top:3000');
 
 let reconnectFlag = ""
